@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "pyMalleableC2"
+version = "0.0.1dev"
+description = "Python library that allows you to parse and build Cobalt Strike Malleable C2 Profiles programmatically."
+authors = ["Marcello Salvati <byt3bl33d3r@pm.com>"]
+readme = "README.md"
+homepage = "https://github.com/byt3bl33d3r/pyMalleableC2"
+repository = "https://github.com/byt3bl33d3r/pyMalleableC2"
+exclude = ["tests/", "examples/"]
+include = ["README.md", "LICENSE", "malleablec2/grammar.lark"]
+#license = "GPL-3.0-only"
+classifiers = [
+    "Topic :: Security",
+]
+
+packages = [
+    { include = "malleablec2"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+lark-parser = "^0.11.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "*"
+black = "^20.8b1"
+pytest = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
