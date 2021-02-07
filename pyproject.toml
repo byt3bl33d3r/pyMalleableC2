@@ -2,10 +2,10 @@
 name = "pyMalleableC2"
 version = "0.0.1dev"
 description = "Python library that allows you to parse and build Cobalt Strike Malleable C2 Profiles programmatically."
-authors = ["Marcello Salvati <byt3bl33d3r@pm.com>"]
+authors = ["Marcello Salvati <marcello@porchetta.industries>"]
 readme = "README.md"
-homepage = "https://github.com/byt3bl33d3r/pyMalleableC2"
-repository = "https://github.com/byt3bl33d3r/pyMalleableC2"
+homepage = "https://github.com/Porchetta-Industries/pyMalleableC2"
+repository = "https://github.com/Porchetta-Industries/pyMalleableC2"
 exclude = ["tests/", "examples/"]
 include = ["README.md", "LICENSE", "malleablec2/grammar.lark"]
 #license = "GPL-3.0-only"

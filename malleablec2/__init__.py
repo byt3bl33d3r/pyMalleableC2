@@ -60,7 +60,7 @@ class Profile:
         indent_n = 0
 
         yield "# Automatically generated with pyMalleableC2\n"
-        yield "# https://github.com/byt3bl33d3r/pyMalleableC2\n"
+        yield "# https://github.com/Porchetta-Industries/pyMalleableC2\n"
         yield "#\n"
         yield "# !!! Make sure to run this profile through c2lint before using !!!\n"
         yield "\n"

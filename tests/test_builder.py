@@ -1,8 +1,9 @@
 import pytest
-from malleablec2.builder import *
+from malleablec2 import Profile
+from malleablec2.components import *
 
 def test_builder():
-    profile = MC2Profile()
+    profile = Profile.from_scratch()
     profile.set_option("sleeptime", "5000")
     profile.set_option("jitter", "0")
     profile.set_option("pipename", "buildtest_##")
@@ -25,4 +26,6 @@ def test_builder():
     profile.add_code_block(http_get)
     profile.add_code_block(http_post)
 
-    print(profile.ast.pretty())
+    assert len(profile.ast.children) > 0
+    c = profile.reconstruct()
+    assert len(c) > 0

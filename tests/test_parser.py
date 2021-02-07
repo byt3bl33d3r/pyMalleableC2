@@ -1,8 +1,13 @@
 import pytest
 import pathlib
-import malleablec2
+from malleablec2 import Profile
 
 def test_parsing():
-    for profile in []:
-        ast = malleablec2.parse()
-        code = malleablec2.reconstruct(ast)
+    path = pathlib.Path('.')
+    profiles = path.glob("tests/profiles/*.profile")
+
+    for profile in profiles:
+        p = Profile.from_file(profile)
+        assert len(p.ast.children) > 0
+        c = p.reconstruct()
+        assert len(c) > 0

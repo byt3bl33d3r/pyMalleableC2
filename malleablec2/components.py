@@ -17,8 +17,8 @@ class CodeBlock:
             name, statement_values
         )
 
-        tree.children[0].append(Token('DELIM', ';'))
-        self.ast.append(tree)
+        tree.children[0].children.append(Token('DELIM', ';'))
+        self.ast.children.append(tree)
 
     def add_code_block(self, tree):
         self.ast.children.append(tree)
@@ -124,7 +124,7 @@ class HttpPostBlock(CodeBlock):
             ]
         )
 
-        self.ast.append(tree)
+        self.ast.children.append(tree)
 
 class HttpGetBlock(CodeBlock):
     def __init__(self, variant_name=None):
@@ -147,7 +147,7 @@ class HttpGetBlock(CodeBlock):
                         ]
                     )
                 )
-    
+
     def set_option(self, name, value):
         tree = Tree(
             'local_option_set', 
@@ -162,4 +162,4 @@ class HttpGetBlock(CodeBlock):
             ]
         )
 
-        self.ast.append(tree)
+        self.ast.children.append(tree)
