@@ -4,11 +4,19 @@
 
 # pyMalleableC2
 
-A Python "interpreter" for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
+A Python "interpreter" library for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
 
 Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. 
 
 **It's not backwards compatible with previous Cobalt Strike releases.**
+
+What are the differences between pyMalleableC2 and other projects of this nature? 
+
+1. Parses profiles with [Lark](https://github.com/lark-parser/lark) using [eBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). This approach is a lot more robust then using plain user defined regexes.
+2. Turns profiles into an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) which can then be reconstructed back into source code.
+3. Because of the above, pyMalleableC2 allows you to build profiles programmatically or modify them on the fly.
+4. Allows you to validate the syntax of Malleable C2 profiles (Does not perform runtime checks, see the warning below.)
+5. It has AI in the form of a lot of `if` statements.
 
 # Sponsors
 [<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
@@ -21,26 +29,20 @@ Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cob
 
 * [pyMalleableC2](#utinni)
   + [Installing](#installing)
-  + [pyMalleableC2 vs Other Similar libraries/tools](#)
+  + [Author](#author)
+  + [Official Discord Channel](#official-discord-channel)
   + [Examples](#examples)
   + [FAQ](#faq)
 
 # Installing
 
-pip:
+pyMalleableC2 was built using Python 3.9, however it should be backwards compatible up to Python 3.6.
+
+Install using Pip:
 - `pip3 installl pymalleablec2`
 
 Docker:
 - `docker pull byt3bl33d3r/pymalleablec2`
-
-# What's the difference between pyMalleableC2 and other Malleable C2 profile parsers?
-
-TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to just a "dumb" parser.
-
-1. Parses profiles using Lark and a grammar file. This approach is a lot more robust then using plain user defined regexes.
-2. Turns profiles into an Abstract Syntax Tree (AST) which we can then reconstruct back into source code.
-3. Because of the above, we can easily build profiles programmatically or modify them on the fly.
-4. Allows you to validate the syntax of Malleable C2 profiles.
 
 # 🚨 WARNING 🚨
 
@@ -48,9 +50,19 @@ TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to
 
 (Technically you could build a Python version of c2lint using this library, *\*cough\** PRs welcome *\*cough\**)
 
-# Examples
+## Author 
 
-(See the [examples](../master/blob/examples) folder for more)
+The primary author of pyMalleableC2 is Marcello Salvati ([@byt3bl33d3r](https://twitter.com/byt3bl33d3r))
+
+## Official Discord Channel
+
+Come hang out on Discord!
+
+[![Porchetta Industries](https://discordapp.com/api/guilds/736724457258745996/widget.png?style=banner3)](https://discord.gg/AKrqt6J)
+
+## Examples
+
+(See the [examples](../master/src/examples) folder for more)
 
 Generate the AST for a Malleable C2 Profile located in a file, then reconstruct the source code from the AST:
 
