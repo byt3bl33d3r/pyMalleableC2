@@ -2,7 +2,9 @@
 
 A Python "interpreter" for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
 
-Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. **Not backwards compatible.**
+Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. 
+
+** Its is not backwards compatible to previous Cobalt Strike releases.**
 
 # Sponsors
 [<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
@@ -27,17 +29,16 @@ Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cob
 
 # What's the difference between pyMalleableC2 and other Malleable C2 profile parsers?
 
-`pyMalleableC2` is different in many ways because of several design decisions (some listed below).
-
 TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to just a "dumb" parser.
 
 1. Parses profiles using Lark and a grammar file. This approach is a lot more robust then using plain user defined regexes.
 2. Turns profiles into an Abstract Syntax Tree (AST) which we can then reconstruct back into source code.
 3. Because of the above, we can easily build profiles programmatically or modify them on the fly.
+4. Allows you to validate the syntax of Malleable C2 profiles.
 
 # 🚨 WARNING 🚨
 
-**pyMalleableC2 treats you as a consenting adult and assumes you know how to write Malleable C2 Profiles: there are very few safety checks and it'll gladly generate invalid profiles if instructed to do so. Always run the generated profiles through [c2lint](https://www.cobaltstrike.com/help-malleable-c2) before using them in production!**
+**pyMalleableC2 treats you as a consenting adult and assumes you know how to write Malleable C2 Profiles, while it's able to detect syntax errors there are no runtime checks implemented. It'll gladly generate profiles that don't actually work in production if instructed to do so. Always run the generated profiles through [c2lint](https://www.cobaltstrike.com/help-malleable-c2) before using them in production!**
 
 (Technically you could build a Python version of c2lint using this library, *cough* PRs welcome *cough*)
 
