@@ -29,6 +29,7 @@ What are the differences between pyMalleableC2 and other projects of this nature
 
 * [pyMalleableC2](#utinni)
   + [Installing](#installing)
+  + [🚨 Warning! No runtime checks (yet!) 🚨](#-warning-)
   + [Author](#author)
   + [Official Discord Channel](#official-discord-channel)
   + [Examples](#examples)
@@ -52,7 +53,9 @@ Docker:
 
 ## Author 
 
-The primary author of pyMalleableC2 is Marcello Salvati ([@byt3bl33d3r](https://twitter.com/byt3bl33d3r))
+The primary author of pyMalleableC2 is Marcello Salvati 
+
+Twitter: [@byt3bl33d3r](https://twitter.com/byt3bl33d3r), Github: [@byt3bl33d3r](https://github.com/byt3bl33d3r)
 
 ## Official Discord Channel
 
@@ -62,7 +65,7 @@ Come hang out on Discord!
 
 ## Examples
 
-(See the [examples](../master/src/examples) folder for more)
+(See the [examples](https://github.com/Porchetta-Industries/pyMalleableC2/tree/main/examples) folder for more)
 
 Generate the AST for a Malleable C2 Profile located in a file, then reconstruct the source code from the AST:
 
