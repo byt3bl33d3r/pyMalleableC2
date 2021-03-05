@@ -1,14 +1,48 @@
 # pyMalleableC2
 
-Python library that allows you to parse and build Cobalt Strike Malleable C2 Profiles programmatically.
+A Python "interpreter" for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
 
-Supports all of the Cobalt Strike Malleable C2 Profile grammar.
+Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. **Not backwards compatible.**
 
-## 🚨 WARNING 🚨
+# Sponsors
+[<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
+[<img src="https://handbook.volkis.com.au/assets/img/Volkis_Logo_Brandpack.svg" width="130" hspace="10"/>](https://volkis.com.au)
+[<img src="https://user-images.githubusercontent.com/5151193/85817125-875e0880-b743-11ea-83e9-764cd55a29c5.png" width="200" vspace="21"/>](https://qomplx.com/blog/cyber/)
+[<img src="https://user-images.githubusercontent.com/5151193/86521020-9f0f4e00-be21-11ea-9256-836bc28e9d14.png" width="250" hspace="20"/>](https://ledgerops.com)
+[<img src="https://user-images.githubusercontent.com/5151193/102297674-e6d7ec80-3f0c-11eb-982f-cc5d13b0e9ce.jpg" width="250" hspace="20"/>](https://www.guidepointsecurity.com/)
+[<img src="https://user-images.githubusercontent.com/5151193/95542303-a27f1c00-09b2-11eb-8682-e10b3e0f0710.jpg" width="200" hspace="20"/>](https://lostrabbitlabs.com/)
+
+# Table of Contents
+
+* [pyMalleableC2](#utinni)
+  + [Installing](#installing)
+  + [pyMalleableC2 vs Other Similar libraries/tools](#)
+  + [Examples](#examples)
+  + [FAQ](#faq)
+
+# Installing
+
+`pip3 installl pymalleablec2`
+
+`docker pull byt3bl33d3r/pymalleablec2`
+
+# What's the difference between pyMalleableC2 and other Malleable C2 profile parsers?
+
+`pyMalleableC2` is different in many ways because of several design decisions (some listed below).
+
+TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to just a "dumb" parser.
+
+1. Parses profiles using Lark and a grammar file. This approach is a lot more robust then using plain user defined regexes.
+2. Turns profiles into an Abstract Syntax Tree (AST) which we can then reconstruct back into source code.
+3. Because of the above, we can easily build profiles programmatically or modify them on the fly.
+
+# 🚨 WARNING 🚨
 
 **pyMalleableC2 treats you as a consenting adult and assumes you know how to write Malleable C2 Profiles: there are very few safety checks and it'll gladly generate invalid profiles if instructed to do so. Always run the generated profiles through [c2lint](https://www.cobaltstrike.com/help-malleable-c2) before using them in production!**
 
-## Examples
+(Technically you could build a Python version of c2lint using this library, *cough* PRs welcome *cough*)
+
+# Examples
 
 (See the examples folder for more)
 
@@ -100,7 +134,7 @@ p.add_code_block(http_post)
 print(p)
 ```
 
-Super simple example on how to randomize a Malleable C2 Profile:
+Super simple example showing how to programmatically randomize a Malleable C2 Profile:
 
 ```python
 from malleablec2 import Profile

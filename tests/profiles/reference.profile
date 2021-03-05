@@ -1,78 +1,71 @@
-#This profile is meant to show all of the options available in Malleable C2
-
-
-#Various options
-
-# Append random-length string (up to data_jitter value) to http-get and http-post server output
+#This profile tries to get all available options in one place for unit testing purposes.
 
 set sample_name "Test Profile";
-set data_jitter "0";
-set dns_idle "0.0.0.0";
-set dns_max_txt "252";
-set dns_sleep "0";
-set dns_stager_prepend "";
-set dns_stager_subhost ".stage.123456.";
-set dns_ttl "1";
-set host_stage "true"; #Host payload for staging over set, setS, or DNS. Required by stagers.
+set host_stage "true"; 
 set jitter "0";
-set maxdns "255";
-set pipename "msagent_###"; #Default name of pipe to use for SMB Beacon’s peer-to-peer communication. Each # is replaced witha random hex value.
+set pipename "msagent_###"; 
 set pipename_stager "status_##";
-set sleeptime "60000"; #def sleep in ms
+set sleeptime "60000";
 set smb_frame_header "";
 set ssh_banner "Cobalt Strike 4.2";
-
 set ssh_pipename "postex_ssh_####";
 set tcp_frame_header "";
 set tcp_port "4444";
+set data_jitter "0";
 
-# Defaults for ALL CS set server responses
+#This is used only in http-get and http-post and not during stage
+set useragent "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko";
+
+dns-beacon {
+    # Options moved into 'dns-beacon' group in 4.3:
+    set dns_idle             "1.2.3.4";
+    set dns_max_txt          "199";
+    set dns_sleep            "1";
+    set dns_ttl              "5";
+    set maxdns               "200";
+    set dns_stager_prepend   "doc-stg-prepend";
+    set dns_stager_subhost   "doc-stg-sh.";
+    # DNS subhost override options added in 4.3:
+    set beacon               "doc.bc.";
+    set get_A                "doc.1a.";
+    set get_AAAA             "doc.4a.";
+    set get_TXT              "doc.tx.";
+    set put_metadata         "doc.md.";
+    set put_output           "doc.po.";
+
+    set ns_response          "zero";
+}
 
 http-config {
     set headers "Date, Server, Content-Length, Keep-Alive, Connection, Content-Type";
     header "Server" "Apache";
     header "Keep-Alive""timeout=5, max=100";
     header "Connection""Keep-Alive";
-
-#   The set trust_x_forwarded_foroption decides if Cobalt Strike uses the 
-# X-Forwarded-For set header to determine the remote address of a request. 
-# Use this option if your Cobalt Strike server is behind an set redirector    
     set trust_x_forwarded_for "true";
-
-    
-
+    set block_useragents "curl*,lynx*,wget*";
 }
-
-
 
 https-certificate {
-    set C "US"; #Country
-    set CN "localhost"; # CN - you will probably nver use this, but don't leave at localost
-    set L "San Francisco"; #Locality
-    set OU "IT Services"; #Org unit
-    set O "FooCorp"; #Org name
-    set ST "CA"; #State
+    set C "US";
+    set CN "localhost";
+    set L "San Francisco";
+    set OU "IT Services";
+    set O "FooCorp";
+    set ST "CA";
     set validity "365";
-
-    # if using a valid vert, specify this, keystore = java keystore
-    #set keystore "domain.store";
-    #set password "mypassword";
-
+	set keystore "domain.store";
+	set password "mypassword";
 }
 
+code-signer {
+    set keystore "keystore.jks";
+    set password "password";
+    set alias "server";
+    set digest_algorithm "SHA256";
+    set timestamp "false";
+    set timestamp_url "set://timestamp.digicert.com";
+}
 
-#If you have code signing cert:
-#code-signer {
-#    set keystore "keystore.jks";
-#    set password "password";
-#    set alias    "server";
-#    set timestamp "false";
-#    set timestamp_url "set://timestamp.digicert.com";
-#}
-
-
-
-#Stager is only supported as a GET request and it will use AFAICT the IE on Windows.
 http-stager {
     set uri_x86 "/api/v1/GetLicence";     
     set uri_x64 "/api/v2/GetLicence";
@@ -93,10 +86,6 @@ http-stager {
     }
 }
 
-
-#This is used only in http-get and http-post and not during stage
-set useragent "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko";
-
 # define indicators for an set GET
 http-get {
 	# we require a stub URI to attach the rest of our data to.
@@ -105,28 +94,13 @@ http-get {
 	client {
 
         header "Accept-Encoding" "deflate, gzip;q=1.0, *;q=0.5";
-		# mask our metadata, base64 encode it, store it in the URI
 		metadata {
-
-
-            # XOR encode the value
 			mask;
-            
-            # URL-safe Base64 Encode
 			#base64url;
-
-            # URL-safe Base64 Encode
 			base64;
-
-            # NetBIOS Encode ‘a’ ?
             #netbios;
 
-            #NetBIOS Encode ‘A’
             #netbiosu;
-
-            # You probably want these to be last two, else you will encode these values
-
-            # Append a string to metadata
             append ";" ;
 
             # Prepend a string

@@ -1,3 +1,5 @@
+// Only compatible with Malleable C2's starting from Cobalt Strike >= 4.3
+
 // This is the grammar definition, we technically wouldn't need the *DELIM terminals as
 // the malleable c2 language isn't space sensitive, however, this allows us to reconstruct source code
 // from the AST preserving indentation which makes the output'ed code a lot more perty
@@ -69,6 +71,11 @@ http_get_statement: "set" HTTP_LOCAL_OPTION string DELIM  -> local_option_set
 
 http_get_block: BEGIN_CODE_BLOCK_DELIM http_get_statement+ END_CODE_BLOCK_DELIM
 
+//dns-beacon
+dns_beacon_statement: "set" DNS_BEACON_LOCAL_OPTION string DELIM  -> local_option_set
+
+dns_beacon_block: BEGIN_CODE_BLOCK_DELIM dns_beacon_statement+ END_CODE_BLOCK_DELIM
+
 // http-config
 http_config_statement: "set" HTTP_CONFIG_LOCAL_OPTION string DELIM  -> local_option_set
                      | "header" string string DELIM                 -> header
@@ -105,12 +112,7 @@ http_stager_statement: "set" HTTP_STAGER_LOCAL_OPTION string DELIM       -> loca
 http_stager_block: BEGIN_CODE_BLOCK_DELIM http_stager_statement+ END_CODE_BLOCK_DELIM
 
 // code-signer
-code_signer_statement: "alias" string DELIM             -> alias
-                     | "digest_algorithm" string DELIM  -> digest_algorithm
-                     | "keystore" string DELIM          -> keystore
-                     | "password" string DELIM          -> password
-                     | "timestamp" string DELIM         -> timestamp
-                     | "timestamp_url" string DELIM     -> timestamp_url
+code_signer_statement: "set" CODE_SIGNER_LOCAL_OPTION string DELIM  -> local_option_set
 
 code_signer_block: BEGIN_CODE_BLOCK_DELIM code_signer_statement+ END_CODE_BLOCK_DELIM
 
@@ -151,6 +153,7 @@ post_ex_block: BEGIN_CODE_BLOCK_DELIM post_ex_statement+ END_CODE_BLOCK_DELIM
       | "stage" stage_block                                     -> stage
       | "process-inject" process_inject_block                   -> process_inject
       | "post-ex" post_ex_block                                 -> post_ex
+      | "dns-beacon" dns_beacon_block                           -> dns_beacon
 
 COMMENT: /#.*/
 
@@ -160,7 +163,7 @@ BEGIN_CODE_BLOCK_DELIM: "{"
 END_CODE_BLOCK_DELIM: "}"
 
 HTTP_LOCAL_OPTION: ("uri"|"verb")
-HTTP_CONFIG_LOCAL_OPTION: ("headers"|"trust_x_forwarded_for")
+HTTP_CONFIG_LOCAL_OPTION: ("headers"|"trust_x_forwarded_for"|"block_useragents")
 HTTP_STAGER_LOCAL_OPTION: ("uri_x86"|"uri_x64")
 
 HTTPS_CERTIFICATE_LOCAL_OPTION: "CN"
@@ -215,17 +218,33 @@ POST_EX_LOCAL_OPTION: "spawnto_x86"
                     | "amsi_disable"
                     | "keylogger"
 
+CODE_SIGNER_LOCAL_OPTION: "alias"
+                        | "digest_algorithm"
+                        | "keystore"
+                        | "password"
+                        | "timestamp_url"
+                        | "timestamp"
+
+DNS_BEACON_LOCAL_OPTION: "dns_idle"
+                       | "dns_max_txt"
+                       | "dns_sleep"
+                       | "dns_ttl"
+                       | "maxdns"
+                       | "dns_stager_prepend"
+                       | "dns_stager_subhost"
+                       // Options added in 4.3
+                       | "beacon"
+                       | "get_AAAA"
+                       | "get_A"
+                       | "get_TXT"
+                       | "put_metadata"
+                       | "put_output"
+                       | "ns_response"
+
 GLOBAL_OPTION: "data_jitter"
-             | "dns_idle"
-             | "dns_max_txt"
-             | "dns_sleep"
-             | "dns_stager_prepend"
-             | "dns_stager_subhost"
-             | "dns_ttl"
              | "headers_remove"
              | "host_stage"
              | "jitter"
-             | "maxdns"
              | "pipename_stager"
              | "pipename"
              | "sample_name"

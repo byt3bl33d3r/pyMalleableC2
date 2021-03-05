@@ -48,7 +48,7 @@ class Profile:
         self.ast.children.append(tree)
 
     def add_code_block(self, tree):
-        self.ast.children.append(tree)
+        self.ast.children.append(tree.ast)
 
     def _postproc_indent(self, items):
         """

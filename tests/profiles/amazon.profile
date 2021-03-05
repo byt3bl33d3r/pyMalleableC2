@@ -6,7 +6,7 @@
 
 set sleeptime "5000";
 set jitter    "0";
-set maxdns    "255";
+#set maxdns    "255";
 set useragent "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko";
 
 http-get {

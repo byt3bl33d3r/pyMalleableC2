@@ -14,6 +14,7 @@ class MyExampleRandomizer(ProfileRandomizer):
         'set uri_x86/uri_x64' in http-stager blocks
         'set headers' in http-config block
         'set pipename' in post-ex block
+        'set dns_stager_subhost' in dns-beacon blocks
         """
 
         option_name = tree.children[0]
@@ -23,6 +24,8 @@ class MyExampleRandomizer(ProfileRandomizer):
         elif option_name == "pipename":
             tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
         elif option_name == "headers":
+            tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
+        elif option_name == "dns_stager_subhost":
             tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
 
     def global_option_set(self, tree):
@@ -34,8 +37,6 @@ class MyExampleRandomizer(ProfileRandomizer):
         if option_name in ["pipename", "ssh_pipename", "pipename_stager"]:
             tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
         elif option_name == "ssh_banner":
-            tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
-        elif option_name == "dns_stager_subhost":
             tree.children[1].children[0] = Token('ESCAPED_STRING', '"wat"')
 
     def header(self, tree):

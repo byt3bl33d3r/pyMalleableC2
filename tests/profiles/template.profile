@@ -15,14 +15,16 @@ set useragent "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/587.38 (KHTML, like Geck
 #set true to use staged payloads, false to disable staged payloads.
 set host_stage "false";
 
-###DNS options###
-set dns_idle "8.8.8.8";
-set maxdns    "245";
-set dns_sleep "0";
-set dns_stager_prepend "";
-set dns_stager_subhost "";
-set dns_max_txt "252";
-set dns_ttl "1";
+dns-beacon {
+    ###DNS options###
+    set dns_idle "8.8.8.8";
+    set maxdns    "245";
+    set dns_sleep "0";
+    set dns_stager_prepend "";
+    set dns_stager_subhost "";
+    set dns_max_txt "252";
+    set dns_ttl "1";
+}
 
 ###SMB options###
 #use different strings for pipename and pipename_stager.
