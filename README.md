@@ -1,10 +1,14 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/5151193/110083243-b3f30700-7d4b-11eb-8b69-28116e5ea1c9.png" alt="pyMalleableC2" height=300 width=500/>
+</p>
+
 # pyMalleableC2
 
 A Python "interpreter" for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
 
 Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. 
 
-**It's is not backwards compatible with previous Cobalt Strike releases.**
+**It's not backwards compatible with previous Cobalt Strike releases.**
 
 # Sponsors
 [<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
@@ -40,9 +44,9 @@ TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to
 
 # 🚨 WARNING 🚨
 
-**pyMalleableC2 treats you as a consenting adult and assumes you know how to write Malleable C2 Profiles, while it's able to detect syntax errors there are no runtime checks implemented. It'll gladly generate profiles that don't actually work in production if instructed to do so. Always run the generated profiles through [c2lint](https://www.cobaltstrike.com/help-malleable-c2) before using them in production!**
+**pyMalleableC2 treats you as a consenting adult and assumes you know how to write Malleable C2 Profiles. It's able to detect syntax errors, however there are no runtime checks implemented. It'll gladly generate profiles that don't actually work in production if instructed to do so. Always run the generated profiles through [c2lint](https://www.cobaltstrike.com/help-malleable-c2) before using them in production!**
 
-(Technically you could build a Python version of c2lint using this library, *cough* PRs welcome *cough*)
+(Technically you could build a Python version of c2lint using this library, *\*cough\** PRs welcome *\*cough\**)
 
 # Examples
 
