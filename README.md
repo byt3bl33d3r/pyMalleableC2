@@ -4,7 +4,7 @@ A Python "interpreter" for Cobalt Strike Malleable C2 profiles that allows you t
 
 Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. 
 
-** Its is not backwards compatible to previous Cobalt Strike releases.**
+**It's is not backwards compatible with previous Cobalt Strike releases.**
 
 # Sponsors
 [<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
@@ -23,9 +23,11 @@ Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cob
 
 # Installing
 
-`pip3 installl pymalleablec2`
+pip:
+- `pip3 installl pymalleablec2`
 
-`docker pull byt3bl33d3r/pymalleablec2`
+Docker:
+- `docker pull byt3bl33d3r/pymalleablec2`
 
 # What's the difference between pyMalleableC2 and other Malleable C2 profile parsers?
 
@@ -44,7 +46,7 @@ TL;DR `pyMalleableC2` is an interpreter for Malleable C2 profiles as supposed to
 
 # Examples
 
-(See the examples folder for more)
+(See the [examples](../master/blob/examples) folder for more)
 
 Generate the AST for a Malleable C2 Profile located in a file, then reconstruct the source code from the AST:
 
@@ -130,7 +132,7 @@ http_post.set_option("uri", "/wat/ucraycray")
 p.add_code_block(http_get)
 p.add_code_block(http_post)
 
-# Print the generated profile
+# Reconstruct source code from the generated AST and print to console
 print(p)
 ```
 
@@ -159,6 +161,6 @@ r = MyRandomizer()
 # Walk through the generated profile AST and apply randomization rules
 r.randomize(p)
 
-# Reconstruct source code and output the profile to the console
+# Reconstruct source code then output the profile to the console
 print(p)
 ```
