@@ -6,6 +6,13 @@ profile.set_option("sleeptime", "5000")
 profile.set_option("jitter", "0")
 profile.set_option("pipename", "buildtest_##")
 
+http_config = HttpConfigBlock()
+http_config.set_option("headers", "Date, Server, Content-Length, Keep-Alive, Connection, Content-Type")
+http_config.set_option("block_useragents", "curl*,lynx*,wget*")
+http_config.add_statement("header", "Connection", "Keep-Alive")
+
+profile.add_code_block(http_config)
+
 dns_beacon = DnsBeaconBlock()
 dns_beacon.set_option("dns_idle", "1.2.3.4")
 dns_beacon.set_option("get_A", "doc.la.")
