@@ -4,7 +4,7 @@
 
 # pyMalleableC2
 
-A Python "interpreter" library for Cobalt Strike Malleable C2 profiles that allows you to parse, modify and build them programmatically.
+A Python interpreter for Cobalt Strike Malleable C2 profiles that allows you to parse, modify, build them programmatically and validate syntax.
 
 Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cobalt Strike version 4.3. 
 
@@ -12,7 +12,7 @@ Supports all of the Cobalt Strike Malleable C2 Profile grammar starting from Cob
 
 What are the differences between pyMalleableC2 and other projects of this nature? 
 
-1. Parses profiles with [Lark](https://github.com/lark-parser/lark) using [eBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). This approach is a lot more robust then using plain user defined regexes.
+1. Parses profiles with [Lark](https://github.com/lark-parser/lark) using [eBNF notation](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). This approach is a lot more robust then user defined regexes, templating engines or similar methods.
 2. Turns profiles into an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree) which can then be reconstructed back into source code.
 3. Because of the above, pyMalleableC2 allows you to build profiles programmatically or modify them on the fly.
 4. Allows you to validate the syntax of Malleable C2 profiles (Does not perform runtime checks, see the warning below.)
