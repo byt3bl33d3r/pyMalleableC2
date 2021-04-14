@@ -42,10 +42,7 @@ What are the differences between pyMalleableC2 and other projects of this nature
 pyMalleableC2 was built using Python 3.9, however it should be backwards compatible up to Python 3.6.
 
 Install using Pip:
-- `pip3 installl pymalleablec2`
-
-Docker:
-- `docker pull byt3bl33d3r/pymalleablec2`
+- `pip3 install pymalleablec2`
 
 # 🚨 WARNING 🚨
 
