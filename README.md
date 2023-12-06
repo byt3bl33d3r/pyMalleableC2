@@ -18,15 +18,6 @@ What are the differences between pyMalleableC2 and other projects of this nature
 4. Allows you to validate the syntax of Malleable C2 profiles (Does not perform runtime checks, see the warning below.)
 5. It has AI in the form of a lot of `if` statements.
 
-# Sponsors
-[<img src="https://www.blackhillsinfosec.com/wp-content/uploads/2016/03/BHIS-logo-L-300x300.png" width="130" height="130"/>](https://www.blackhillsinfosec.com/)
-[<img src="https://handbook.volkis.com.au/assets/img/Volkis_Logo_Brandpack.svg" width="130" hspace="10"/>](https://volkis.com.au)
-[<img src="https://user-images.githubusercontent.com/5151193/85817125-875e0880-b743-11ea-83e9-764cd55a29c5.png" width="200" vspace="21"/>](https://qomplx.com/blog/cyber/)
-[<img src="https://user-images.githubusercontent.com/5151193/86521020-9f0f4e00-be21-11ea-9256-836bc28e9d14.png" width="250" hspace="20"/>](https://ledgerops.com)
-[<img src="https://user-images.githubusercontent.com/5151193/95542303-a27f1c00-09b2-11eb-8682-e10b3e0f0710.jpg" width="200" hspace="20"/>](https://lostrabbitlabs.com/)
-[<img src="https://user-images.githubusercontent.com/5151193/113820904-334f6e00-9730-11eb-9f26-128b0917f5c6.png" width="150" height="150" hspace="20"/>](https://kovert.no/)
-[<img src="https://user-images.githubusercontent.com/5151193/113820971-4c581f00-9730-11eb-91d6-01fe1e72f556.jpg" width="250" hspace="20"/>](https://www.ondefend.com/)
-
 # Table of Contents
 
 * [pyMalleableC2](#utinni)
@@ -55,12 +46,6 @@ Install using Pip:
 The primary author of pyMalleableC2 is Marcello Salvati 
 
 Twitter: [@byt3bl33d3r](https://twitter.com/byt3bl33d3r), Github: [@byt3bl33d3r](https://github.com/byt3bl33d3r)
-
-## Official Discord Channel
-
-Come hang out on Discord!
-
-[![Porchetta Industries](https://discordapp.com/api/guilds/736724457258745996/widget.png?style=banner3)](https://discord.gg/AKrqt6J)
 
 ## Examples
 
