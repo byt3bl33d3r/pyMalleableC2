@@ -122,6 +122,7 @@ stage_statement: "set" STAGE_LOCAL_OPTION string DELIM  -> local_option_set
                | "transform-x64" transform_block      -> transform_x64
                | "stringw" string DELIM                 -> stringw
                | "string" string DELIM                  -> string
+               | "data" string DELIM                  -> data
 
 stage_block: BEGIN_CODE_BLOCK_DELIM stage_statement+ END_CODE_BLOCK_DELIM
 
